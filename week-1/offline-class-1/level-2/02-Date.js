@@ -23,6 +23,6 @@ function dateMethods() {
   const newDate = new Date(2023, 8, 15); // Creating a new date
   console.log("New Date:", newDate);
 }
-
+console.log("hello")
 // Example Usage for Date Methods
 dateMethods();
