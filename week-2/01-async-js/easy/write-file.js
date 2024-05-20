@@ -5,5 +5,5 @@ fs.writeFile('a.txt','hello how are yo','utf8',(err) => {
 })
 
 fs.readFile('a.txt','utf-8',(err, data) => {
-    console.log(data)
+    // console.log(data)
 })
