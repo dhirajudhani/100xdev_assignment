@@ -11,7 +11,29 @@ const app = express();
 // You have been given a numberOfRequestsForUser object to start off with which
 // clears every one second
 
+
 let numberOfRequestsForUser = {};
+
+function numberOfRequest(req, res, next){
+  const userId = req.header('user-id');
+  if(!userId){
+    return res.status(400).send('User ID is required');
+  }
+  // console.log(numberOfRequestsForUser)
+  if(!numberOfRequestsForUser[userId]){
+    numberOfRequestsForUser[userId] = 0;
+  }
+
+  numberOfRequestsForUser[userId]++;
+  // console.log(numberOfRequestsForUser)
+  if(numberOfRequestsForUser[userId]<=5){
+    next();
+  }
+  else{
+    res.status(404).send("User doesnt exists")
+  }
+}
+app.use(numberOfRequest)
 setInterval(() => {
     numberOfRequestsForUser = {};
 }, 1000)
@@ -23,5 +45,7 @@ app.get('/user', function(req, res) {
 app.post('/user', function(req, res) {
   res.status(200).json({ msg: 'created dummy user' });
 });
+
+app.listen(3000)
 
 module.exports = app;
