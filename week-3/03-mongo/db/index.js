@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect('y');
+mongoose.connect('your url;');
 
 // Define schemas
 const AdminSchema = new mongoose.Schema({
@@ -13,8 +13,8 @@ const UserSchema = new mongoose.Schema({
     username : String,
     password : String,
     purchasedCourses : [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Course"
+        type: mongoose.Schema.Types.ObjectId, // it will take id from course table and store in user table
+        ref: "Course" // refering a course table / collection
     }]
 });
 
@@ -25,7 +25,7 @@ const CourseSchema = new mongoose.Schema({
    price: Number
 });
 
-const Admin = mongoose.model('Admin', AdminSchema);
+const Admin = mongoose.model('Admin', AdminSchema); //create model of each table
 const User = mongoose.model('User', UserSchema);
 const Course = mongoose.model('Course', CourseSchema);
 
