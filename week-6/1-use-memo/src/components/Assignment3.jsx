@@ -12,10 +12,21 @@ export const Assignment3 = () => {
     ]);
 
     // Your code starts here
-    const totalValue = 0;
+    let totalValue = useMemo(() => {
+        let value = 0
+        for(let i = 0; i<items.length; i++){
+            value += items[i].value
+        }
+        return value
+    },[items]);
+    
+
+    // const totalValue = items.reduce((accumulator, currentValue) => accumulator + currentValue.value, initialvalue);
+    
     // Your code ends here
     return (
         <div>
+        
             <ul>
                 {items.map((item, index) => (
                     <li key={index}>{item.name} - Price: ${item.value}</li>
