@@ -9,6 +9,10 @@ router.post('/signup', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    const existingUser = await Admin.findOne({username: username});
+    if(existingUser) {
+        return res.status(400).json({msg: "Admin already exist please try to login"})
+    }
     await Admin.create({
         username: username,
         password: password

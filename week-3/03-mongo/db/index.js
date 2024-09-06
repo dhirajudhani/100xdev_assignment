@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// 
 
 // Connect to MongoDB
 mongoose.connect('your url;');
@@ -25,7 +26,7 @@ const CourseSchema = new mongoose.Schema({
    price: Number
 });
 
-const Admin = mongoose.model('Admin', AdminSchema); //create model of each table
+const Admin = mongoose.model('Admin', AdminSchema); //create model of each table as after creating the schema
 const User = mongoose.model('User', UserSchema);
 const Course = mongoose.model('Course', CourseSchema);
 
